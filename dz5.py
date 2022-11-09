@@ -3,7 +3,7 @@
 # print (' '.join(filter(lambda x: not 'абв' in x,input('Введите текст ').split())))
 
 
-# Задание 2
+# Задание №2
 
 # from os import system
 # from random import randint
@@ -88,7 +88,7 @@
 
 # start_menu()
 
-
+# задача №3
 # from os import system
 # def zero_chenge(x):
 #     return x if x != 0 else ' '
@@ -162,29 +162,3 @@
 
 # game()
 
-def archive(text: str) -> str:
-    count = 1
-    while count!= len(text) and text[count] == text[count-1]:
-        count +=1
-    else:
-        return text[count-1] + str(count) + (archive(text[count:]) if count < len(text) else '')
-
-def unarchive(arc_text: str) -> str:
-    result_text = ''
-    while arc_text != '':
-        count = 1
-        while count + 1 < len(arc_text) and arc_text[count + 1].isdigit():
-            count += 1
-        result_text += arc_text[0] * int((arc_text[1:count + 1] if (count + 1 != len(arc_text)) else arc_text[1:]))
-        arc_text = arc_text[count + 1:]
-    return result_text
-
-with open('start_text.json', 'r') as of:
-    file_text = of.read()
-
-print(at := archive(file_text))
-
-with open('archive_text.json', 'w') as of:
-    of.write(at)
-
-print(unarchive(at))
